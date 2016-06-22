@@ -1,0 +1,219 @@
+// exerecise 1 day 2
+
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int m; // m is the maximum number
+	int i = 0; // index variable
+	int sum = 0; // sum 
+	cout << "please enter the maximum number" << endl;
+	cin >> m ;
+	int a[100]; // an array containing the fibonaci sequence
+	a[0] = 1;
+	a[1] = 1; 
+	for (i=1;a[i]<=m; i++)  //set values
+	{
+		a[i+1]= a[i] + a[i-1];
+
+	}
+	cout << "print out the sequence" << endl;
+	for (i=0;a[i]<=m; i++) //print out the sequence, calculate the sum
+	{
+		cout << a[i] << "\t" ;
+		sum = sum + a[i];
+	}
+	cout << "sum =" << sum << endl;
+	system("pause");
+	return 0;
+}
+
+
+// Exercise 2 day 2
+
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int m; // the minutes of using
+	int c; // cost
+	cout << "please enter the minutes of using" << endl;
+	cin >> m ;
+	
+	if (m<=50)
+	{
+		c= (25000 + m*600);
+		cout << "cost = "  << "(25000 + " <<m << "*600) = " << c << endl;
+	}
+	else if (m>50 && m<=200)
+	{
+		c= (25000 + 50*600 + (m-50)*400);
+		cout << "cost = "  << "(25000 + 50*600 + "<< (m-50) <<"*400) = " << c << endl;
+	}
+	else 
+	{
+		c= (25000 + 50*600 + 150*400 +(m-200)*200);
+		cout << "cost = "  << "(25000 + 50*600 + 150*400 +" <<(m-200) << "*200) = " << c << endl;
+	}
+
+	
+	system("pause");
+	return 0;
+}
+
+
+// exercise 1 day 3
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int n;
+	cout << "please enter the number " << endl ;
+	cin >> n;
+	cout << n << endl ;
+	int a[100] ;
+
+	for (int i = 0 ; i<n ; i++)
+	{
+		cout << "enter a[" << i << "]";
+		cin >> a[i] ;
+	}
+	
+	for (int i = 0 ; i<n ; i++)
+	{
+		cout << a[i] << "\t";
+	}
+
+	int min = a[0];
+	for (int i = 0 ; i<n ; i++)
+	{
+		if (a[i]<min)
+			min = a[i];
+	}
+
+	int max = a[0];
+	for (int i = 0 ; i<n ; i++)
+	{
+		if (a[i]>max)
+			max = a[i];
+	}
+	cout << "max = " <<max << "min = " << min << endl;  
+
+	int freqar[100];
+
+	for (int i = 0 ; i<n ; i++)
+	{
+		int freq = 0;
+		for (int j = 0 ; j<n ; j++)
+		{
+			if (a[i] == a[j])
+				{freq++;}
+		}
+		freqar[i] = freq;
+	}
+
+	int mostFreq = freqar[0];
+	for (int i = 0 ; i<n ; i++)
+	{
+		if (freqar[i]>mostFreq)
+			mostFreq = freqar[i];
+	}
+
+	int swap;
+	// Sort ascending
+	for (int i = 0 ; i<(n-1) ; i++)
+	{
+		for (int j = 0 ; j<(n-i-1) ; j++)
+		{
+			if (a[j] > a[j+1])
+			{
+				swap = a[j];
+				a[j]= a[j+1];
+				a[j+1]=swap;
+			}
+		}
+	}
+
+	for (int i = 0 ; i<n ; i++)
+	{
+		cout << a[i] << "\t";
+	}
+
+	cout << "mostfreq = " << mostFreq << endl; 
+	system("pause");
+	return 0;
+}
+
+
+// exerxise 2 day 3
+
+#include "stdafx.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+  
+int main()
+{
+	fstream myfile;
+	myfile.open("input.txt");
+	
+
+	float num1, num2, num3, num4, num5;
+
+	cout << "Enter the first number: ";
+	cin >> num1;
+	myfile << num1 << endl;
+	cout << "Enter the second number: ";
+	cin >> num2;
+	myfile << num2 << endl;
+	cout << "Enter the third number: ";
+	cin >> num3;
+	myfile << num3 << endl;
+	cout << "Enter the fourth number: ";
+	cin >> num4;
+	myfile << num4 << endl;
+	cout << "Enter the fifth number: ";
+	cin >> num5;
+	myfile << num5;
+	myfile.close();
+
+	float numbers[10];
+	int x = 0;
+	float sum = 0;
+	fstream mywrittenfile;
+	mywrittenfile.open("input.txt");
+	
+	while ( ! mywrittenfile.eof())
+	{
+		(mywrittenfile) >> numbers[x];
+		cout << numbers[x] <<endl;
+		x++;
+	}
+
+
+
+	for (int i = 0  ; i< x ; i++)
+	{
+		sum = sum + pow(numbers[i],2) ;
+	}
+
+	cout << sum <<endl;
+
+	mywrittenfile.close();
+
+	system("pause");
+	return 0;
+}
+
+
