@@ -186,8 +186,8 @@ if(isset($_POST['dd'])||isset($_POST['mm'])||isset($_POST['yy'])){
 	$dd = $_POST['dd'];
 	$mm = $_POST['mm'];
 	$yy = $_POST['yy'];
-	if ($dd <= 0) $dd = $date_array['mday'];
-	if ($mm <= 0) $mm = $date_array['mon'];
+	if ($dd <= 0|| $dd>31) $dd = $date_array['mday'];
+	if ($mm <= 0|| $mm>12) $mm = $date_array['mon'];
 	if ($yy <= 0) $yy = $date_array['year'];
 	$al = convertSolar2Lunar($dd, $mm, $yy, 7.0);
 ;
